@@ -4,12 +4,14 @@
 // +----------------------------------------------------------------------
 
 return [
+    // 多应用
+    'auto_multi_app' => true,
     // 应用地址
     'app_host'         => env('app.host', ''),
     // 应用的命名空间
     'app_namespace'    => '',
     // 是否启用路由
-    'with_route'       => true,
+    'with_route'       => false,
     // 默认应用
     'default_app'      => 'index',
     // 默认时区

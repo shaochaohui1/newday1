@@ -1,6 +1,6 @@
 <?php
 namespace app\controller;
-
+use think\db\Query;
 use app\BaseController;
 
 class Index extends BaseController
