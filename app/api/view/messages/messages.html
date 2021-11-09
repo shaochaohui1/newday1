@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>练习网页</title>
+    <script src="/public/static/jquery.js"></script>
+</head>
+<body>
+<div>
+    <span>姓名：{$list}</span>
+    {foreach $list1 as $v}
+       {foreach $list2 as $v1}
+    <div>
+        <span>消息：{$v1['text']}</span>
+        <span>状态：{$v1['status']}</span>
+    </div>
+       {/foreach}
+    {/foreach}
+    {foreach $list1 as $v}
+    {foreach $list3 as $v2}
+    <div>
+        <span>消息：{$v2['text']}</span>
+        <span>状态：{$v2['status']}</span>
+    </div>
+    {/foreach}
+    {/foreach}
+</div>
+<form  action="/api/messages/app" class="container" enctype="multipart/form-data" method="post" id='formBox' name="form"  onsubmit="return false" >
+    <input type="file" id="chooseImage" name="file">
+    <img id="cropedBigImg" style="width: 100px; height: 100px" value='custom' data-address='' />
+     <input type="submit" value="上传" />
+</form>
+
+<script>
+     $('#chooseImage').on('change',function(){
+         var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
+             fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
+             src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
+         if( !fileFormat.match(/.png|.jpg|.jpeg/) ) {
+             error_prompt_alert('上传错误,文件格式必须为：png/jpg/jpeg');
+             return;
+         }
+         $('#cropedBigImg').attr('src',src);})
+ </script>
+</body>
+</html>
