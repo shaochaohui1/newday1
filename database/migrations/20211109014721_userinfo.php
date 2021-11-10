@@ -28,8 +28,8 @@ class Userinfo extends Migrator
      */
     public function change()
     {
-        $table  =  $this->table('users',array('engine'=>'MyISAM'));
-        $table->addColumn('userid', 'string',array('limit'  =>  15,'default'=>'','comment'=>'用户id'))
+        $table  =  $this->table('users_info',array('engine'=>'MyISAM'));
+        $table->addColumn('user_id', 'string',array('limit'  =>  15,'default'=>'','comment'=>'用户id'))
             ->addColumn('username', 'string',array('limit'  =>  15,'default'=>'','comment'=>'用户名'))
             ->addColumn('mobile', 'string',array('limit'  =>  15,'default'=>'','comment'=>'手机号'))
             ->create();

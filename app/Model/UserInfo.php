@@ -5,6 +5,6 @@ use think\Model;
 
 class UserInfo extends Model
 {
-    protected $table = 'users';
+    protected $table = 'users_info';
 
 }
