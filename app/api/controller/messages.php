@@ -12,21 +12,24 @@ class messages extends BaseController
     public function my_list($user_id='1')
     {
        $user= new  UserList;
-       $users=$user::where("userid",$user_id)->find();
-       if($users->status=0) {
-           $use= [
-               'status'=>'未读',
-               'message'=>$users->messages_id,
-           ];
-           return json($use);
-       }else{
-           $uset=[
-               'status'=>'已读',
-               'messages'=>$users->messages_id,
-           ];
-           return  json($uset);
-       }
+       $messages= new UserInfo;
+       $users=$messages::where("user_id",$user_id)->find();
+       $info1=$user::where("user_id",$user_id)->where('status',1)->find();
+       $info2=Db::table('messages')->where('id','<>',$info1->messages_id)->value('messages');
+       $info3=Db::table('messages')->where('id',$info1->messages_id)->value('messages');
+       if($users){
+           $text=[
+               'name'=>$users->username,
+               'messages'=>([
+                    ['text'=>$info2,'status'=>'未读'],
+                   ['text'=>$info3,'status'=>'已读']
 
+               ])
+
+           ];
+           return json($text);
+
+       }
 
     }
 }

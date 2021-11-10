@@ -6,7 +6,7 @@ use think\Model;
 
 class UserList extends Model
 {
-    protected $table = 'user_message';
+    protected $table = 'users_messages1';
 
 
 
