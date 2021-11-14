@@ -10,9 +10,9 @@ use think\Model;
 /**
  * @mixin \think\Model
  */
-class UserInfo extends Model
+class Messages extends Model
 {
-    protected $table = 'users_info';
+    protected $table = 'messages';
 
 
 }

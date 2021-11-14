@@ -28,6 +28,9 @@ class Photos extends Migrator
      */
     public function change()
     {
-
+        $table  =  $this->table('photos',array('engine'=>'MyISAM'));
+        $table->addColumn('username', 'string',array('limit'  =>  15,'default'=>'','comment'=>'用户名称'))
+            ->addColumn('url', 'integer',array('limit'  =>  11,'default'=>0,'comment'=>'图片路径'))
+            ->create();
     }
 }

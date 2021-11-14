@@ -3,7 +3,7 @@
 use think\migration\Migrator;
 use think\migration\db\Column;
 
-class UserInfo extends Migrator
+class Userinfo extends Migrator
 {
     /**
      * Change Method.
@@ -26,16 +26,23 @@ class UserInfo extends Migrator
      * Remember to call "create()" or "update()" and NOT "save()" when working
      * with the Table class.
      */
-    public function up()
+    public function change()
     {
-        $table  =  $this->table('users_info1',array('engine'=>'MyISAM'));
+        $table  =  $this->table('users_info',array('engine'=>'MyISAM'));
         $table->addColumn('user_id', 'string',array('limit'  =>  15,'default'=>'','comment'=>'用户id'))
             ->addColumn('username', 'string',array('limit'  =>  15,'default'=>'','comment'=>'用户名'))
-            ->addColumn('url', 'string',array('limit'  =>  100,'default'=>'','comment'=>'图片路径'))
+            ->addColumn('mobile', 'string',array('limit'  =>  15,'default'=>'','comment'=>'手机号'))
             ->create();
     }
+    public function up()
+    {
+
+    }
+    /**
+     * Migrate Down.
+     */
     public function down()
     {
-        $table = $this->table('users_info1');
+
     }
 }
