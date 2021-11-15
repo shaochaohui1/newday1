@@ -1,16 +1,14 @@
 <?php
 namespace app\api\controller;
-use app\api\Model\main;
-use app\api\Model\UserInfo;
+use app\api\Model\UserInfos;
 use app\BaseController;
 use think\App;
-use think\facade\View;
 class messages extends BaseController
 {
     protected $request;
     public  function  messages(){
           $user_id=$this->request->param('user_id');
-          $username=UserInfo::UserInfo($user_id);
+          $username=UserInfos::UserInfo($user_id);
           $tps=\app\api\Model\Messages::Userinfo1($user_id);
         if($username){
             $text=[

@@ -1,9 +1,8 @@
 <?php
 namespace app\api\controller;
-
-use app\api\Model\main;
-use app\api\Model\UserInfo;
+use app\api\Model\UserInfos;
 use app\BaseController;
+use app\api\server\upload;
 use think\App;
 use think\facade\View;
 class web extends BaseController
@@ -11,7 +10,7 @@ class web extends BaseController
     protected $request;
     public  function  messages(){
         $user_id=$this->request->param('user_id');
-        $username=UserInfo::UserInfo($user_id);
+        $username=UserInfos::UserInfo($user_id);
         $tps=\app\api\Model\Messages::Userinfo1($user_id);
         if($username){
             $name=$username['username'];
@@ -28,9 +27,9 @@ class web extends BaseController
             return 'erro';
         }
     }
-    public  function  app(main $main){
+    public  function  app(upload $main){
         $file = request()->file('file');
-        $savename1=$app1->upload($file);
+        $savename1=$main->upload($file);
         return $savename1;
     }
 

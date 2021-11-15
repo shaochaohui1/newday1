@@ -11,7 +11,7 @@ use think\Model;
 /**
  * @mixin \think\Model
  */
-class UserInfo extends Model
+class UserInfos extends Model
 {
     protected $table = 'users_info';
      public   static  function  UserInfo($user_id){
