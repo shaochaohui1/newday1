@@ -10,10 +10,13 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
+
 Route::get('think', function () {
     return 'hello,ThinkPHP6!';
 });
 
 Route::get('hello/:name', 'index/hello');
 //Route::get('api/my_list', 'api/messages/my_list');
-Route::get('api/:user_id', 'api/messages/my_list');
+Route::get('api/message:user_id', 'messages/messages');
+//Route::post('api/upload:user_id', 'messages/app');
+
