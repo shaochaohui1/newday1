@@ -1,34 +1,29 @@
 <?php
 namespace app\api\controller;
 use app\api\Model\main;
+use app\api\Model\UserInfo;
 use app\BaseController;
 use think\App;
 use think\facade\View;
 class messages extends BaseController
 {
     protected $request;
-    public function  messages(main $app1  ){
+    public  function  messages(){
           $user_id=$this->request->param('user_id');
-          $tps=$app1->my_list($user_id);
-          if($tps[0]){
-             $name=$tps[0]->username;
-              $text1=[
-                 $text3=['text'=>$tps[1],'status'=>'已读'],
-                 $text4=['text'=>$tps[2],'status'=>'未读'],
-              ];
-              View::assign('list',$name);
-              View::assign('list1',array($text1));
-              View::assign('list2',array($text3));
-              View::assign('list3',array($text4));
-              return View::fetch();
-         }else{
-            return 'erro';
+          $username=UserInfo::UserInfo($user_id);
+          $tps=\app\api\Model\Messages::Userinfo1($user_id);
+        if($username){
+            $text=[
+                'name'=>$username['username'],
+                'messages'=>([
+                    ['text'=>$tps[0],'status'=>'未读'],
+                    ['text'=>$tps[1],'status'=>'已读']
+
+                ])
+            ];
+            return json($text);
         }
     }
-    public  function  app(main $app1 ){
-        $file = request()->file('file');
-        $savename1=$app1->upload($file);
-        return $savename1;
-    }
+
 
 }

@@ -16,7 +16,8 @@ Route::get('think', function () {
 });
 
 Route::get('hello/:name', 'index/hello');
-//Route::get('api/my_list', 'api/messages/my_list');
-Route::get('api/message:user_id', 'messages/messages');
-//Route::post('api/upload:user_id', 'messages/app');
+//Route::get('messages/my_list', 'messages/messages/my_list');
+Route::get('messages/message:user_id', 'messages/messages');
+Route::get('messages/message:user_id', 'messages/messages1');
+//Route::post('messages/upload:user_id', 'messages/app');
 
